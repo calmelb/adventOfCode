@@ -7,6 +7,10 @@ seatIDs = {}
 largestID = 0
 largestSeat = ""
 
+mySeat = ""
+mySeatID = 0
+mainIDs = []
+
 for i in text:
     plain_text.append(i.strip())
 
@@ -45,13 +49,30 @@ for seat in plain_text:
     seatIDs[seat] = seatID
 
 # print(seatIDs)
+## Part 1
 
-for seat in plain_text:
-    if seatIDs.get(seat) > largestID:
-        largestID = seatIDs.get(seat)
-        largestSeat = seat
+# for seat in plain_text:
+#     if seatIDs.get(seat) > largestID:
+#         largestID = seatIDs.get(seat)
+#         largestSeat = seat
+#
+# # Results Printing:
+#
+# print("\n---RESULTS---\nLargest Seat Location: " + largestSeat)
+# print("Largest Seat ID: " + str(largestID))
+
+## Part 2
+
+for seatMap in seatIDs:
+    mainIDs.append(seatIDs.get(seatMap))
+mainIDs.sort()
+
+for seatIndex in range(0, len(mainIDs)-1):
+    if mainIDs[seatIndex] != mainIDs[seatIndex+1]-1:
+        mySeatID = mainIDs[seatIndex] + 1
+        # largestSeat = seat
 
 # Results Printing:
 
-print("\n---RESULTS---\nLargest Seat Location: " + largestSeat)
-print("Largest Seat ID: " + str(largestID))
+print("\n---RESULTS---\nMy Seat Location: " + mySeat)
+print("My Seat ID: " + str(mySeatID))
