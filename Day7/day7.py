@@ -1,7 +1,9 @@
-debug = 1
+debug = 0
 
 if debug == 0:
     file = open("input.txt","r")
+elif debug == 2:
+    file = open("test2.txt","r")
 else:
     file = open("test.txt","r")
 
@@ -77,14 +79,32 @@ print("\nLength: " + str(len(fullListBag))+"\n")
 print(bagList)
 
 # /---Part 2---\
+print("\n ------ PART 2 ------\n")
 
 newBags = []
 newBagCount = 0
 
 def bagContents(bagrequest):
+    global newBagCount
     # {'dark olive': '1', 'vibrant plum': '2'}
     bagInside = bagList.get(bagrequest)
-    for item in bagrequest
+    if bagInside is None:
+        print("End of chain!")
+        return 0
+    else:
+        for item in bagInside:
+            print(item)
+            newBags.append(item)
+            noBags = int(bagInside.get(item))
+            for num in range(0, noBags):
+                bagContents(item)
+            newBagCount = newBagCount + noBags
 
 
+
+
+bagContents('shiny gold')
+# bagContents('faded blue')
+print(newBags)
+print(newBagCount)
 
